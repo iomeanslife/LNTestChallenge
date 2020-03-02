@@ -13,6 +13,19 @@ namespace LNTestChallenge
 {
     public class ChallengeOutput
     {
+        private static bool Divisionable(int index, int[] dividers)
+        {
+            foreach (var divider in dividers)
+            {
+                if (index % divider != 0)
+                {
+                    return false;
+                }
+            }    
+            
+            return true;
+        }
+
         public static ResultDto GetResult(RuleSet ruleSet,int rangeStart,int rangeEnd)
         {
             var summaryDictionary = new Dictionary<string,int>();
@@ -25,19 +38,8 @@ namespace LNTestChallenge
                 bool matched = false;
 
                 foreach (var rule in ruleSet.Rules)
-                {
-                    bool divisionable = true;
-
-                    foreach (var divider in rule.Dividers)
-                    {
-                        if (i % divider != 0)
-                        {
-                            divisionable = false;
-                            break;
-                        }
-                    }
-                    
-                    if (divisionable)
+                {   
+                    if (ChallengeOutput.Divisionable(i, rule.Dividers))
                     {
                         matched = true;
                         resultStringBuilder.Append(rule.Phrase);
