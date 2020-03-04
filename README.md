@@ -16,6 +16,24 @@ Omar Ajerray
 - .NET Core SDK 3.1
 - Asp.NET Core runtime 3.1
 
+## Build
+
+_BASH_
+
+When the dotnet sdk is installed, run `dotnet build` in the project root directory. 
+
+## Run
+
+_BASH_
+
+When built, run `dotnet run --project ./LNTestChallenge/LNTestChallenge.csproj` in the project root directory to start the web API. then navigate to the URL shown in the Ouptput plus one of the endpoints described further in the document.
+
+## Test
+
+_BASH_
+
+When built, run `dotnet test` in the project root directory to run the tests.
+
 ## API Endpoints
 
 ### [HostUrl]/LiveNationCodeChallenge/RuleSet

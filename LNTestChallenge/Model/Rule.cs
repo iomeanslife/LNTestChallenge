@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections;
 
-namespace LNTestChallenge
+namespace LNTestChallenge.Model
 {
     public class Rule
     {

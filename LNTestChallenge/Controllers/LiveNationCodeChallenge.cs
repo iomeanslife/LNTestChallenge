@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections;
+using LNTestChallenge.Model;
 
 namespace LNTestChallenge.Controllers
 {
@@ -32,11 +33,11 @@ namespace LNTestChallenge.Controllers
         [Route("RuleSet")]
         public RuleSet Get()
         {            
-            var rs = new RuleSet();
-            rs.Rules = new Rule[]{ new Rule(){Dividers = new int[]{ 3 }, Phrase = "Live"} ,
+            var ruleSet = new RuleSet();
+            ruleSet.Rules = new Rule[]{ new Rule(){Dividers = new int[]{ 3 }, Phrase = "Live"} ,
              new Rule(){Dividers = new int[]{ 5 }, Phrase = "Nation"} ,
              new Rule(){Dividers = new int[]{ 3,5 }, Phrase = "LiveNation" }};
-            return rs;
+            return ruleSet;
         }
     }
 }
