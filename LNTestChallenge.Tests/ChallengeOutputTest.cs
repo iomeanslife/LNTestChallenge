@@ -2,6 +2,7 @@ using System;
 using Xunit;
 using LNTestChallenge;
 using LNTestChallenge.Model;
+
 namespace LNTestChallenge.Tests
 {
     public class ChallengeOutputTest
@@ -61,7 +62,7 @@ namespace LNTestChallenge.Tests
         }
         
         [Fact]
-        public void GetResultNoRules()
+        public void GetResultEmptyRuleSet()
         {
             var ruleSetTest = new RuleSet();
             ruleSetTest.Rules = new Rule[]{};             
@@ -72,14 +73,24 @@ namespace LNTestChallenge.Tests
         }
 
         [Fact]
-        public void GetResultReverse()
+        public void GetResultNullRuleSet()
         {
+          Assert.Throws<ArgumentNullException>(()=>{
+            var resultDto = ChallengeOutput.GetResult(null,1,10);
+            Console.WriteLine(resultDto.Result.ToString());
+             });
+                    }
+
+        [Fact]
+        public void GetResultReverse()
+        {  
+            Assert.Throws<Exception>(()=>{
+         
             var ruleSetTest = new RuleSet();
             ruleSetTest.Rules = new Rule[]{};             
             var resultDto = ChallengeOutput.GetResult(ruleSetTest,10,1);
             Console.WriteLine(resultDto.Result.ToString());
-            Assert.True(
-                string.Equals(resultDto.Result, ""));
+             });
         }
     }
 }

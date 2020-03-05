@@ -27,14 +27,15 @@ namespace LNTestChallenge
             return true;
         }
 
-        public static ResultDto GetResult(RuleSet ruleSet,int rangeStart,int rangeEnd)
+        public static ResultDto GetResult(RuleSet ruleSet, int rangeStart,int rangeEnd)
         {
+            var request = new Request(ruleSet, rangeStart, rangeEnd);
             var summaryDictionary = new Dictionary<string,int>();
             var resultStringBuilder = new StringBuilder();
 
             summaryDictionary["Integer"] = 0;
 
-            for (int i = rangeStart; i <= rangeEnd; i++)
+            for (int i = request.RangeStart; i <= request.RangeEnd; i++)
             {
                 bool matched = false;
 
@@ -58,7 +59,7 @@ namespace LNTestChallenge
                     summaryDictionary["Integer"] = summaryDictionary["Integer"] + 1;
                 }
 
-                if (i < rangeEnd)
+                if (i < request.RangeEnd)
                 {
                     resultStringBuilder.Append(' ');
                 }
